@@ -1,0 +1,23 @@
+.cardComic{
+  background: white;
+  width: 100%;
+  border-radius: 10px 70px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  .cardComicContentText{
+    max-width: 798px;
+    width: 100%;
+    .cardComicTitle{
+      font-size: 1.875rem !important;
+      font-weight: 700;
+      line-height:2.1975rem;
+    }
+    .cardComicContentInformation{
+      display: grid;
+      grid-template-columns: auto auto auto;
+      max-width: 326.04px;
+    }
+  }
+}
