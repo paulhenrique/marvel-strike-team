@@ -7,11 +7,7 @@ Footer {
   justify-content: center;
   align-items: center;
   div.container {
-    width: 100%;
-    max-width: 1600px;
-    margin: auto;
-    display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     color: white; 
     p {
       font-family: var(--font-family);

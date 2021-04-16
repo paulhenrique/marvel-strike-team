@@ -1,17 +1,14 @@
 .navbar{
   height: 150px;
   max-width: 100vw;
+  width:100%;
   display: block;
   background:var(--dark-background);
   display: flex;
   justify-content:center;
   align-items: center;
   .container{
-    width:100%;
-    max-width: 1600px;
-    margin: auto;
-    display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     color: white;
     div.left{
       display: flex;
