@@ -1,10 +1,12 @@
 import React from 'react';
+import Navbar from './components/Navbar';
 import logo from './logo.svg';
 import './assets/style/app.scss';
 
 function App() {
   return (
     <div className="App">
+      <Navbar />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
