@@ -9,7 +9,9 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="container">
         <div className="left">
-          <img src={ironManIcon} alt="Ícone com o capacete do homem de ferro" />
+          <Link to="/">
+            <img src={ironManIcon} alt="Ícone com o capacete do homem de ferro" />
+          </Link>
           <h1>Marvel Strike Team</h1>
         </div>
         <div className="right">

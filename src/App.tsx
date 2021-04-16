@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
+import HeroProfile from './pages/Hero-Profile';
 import './assets/style/app.scss';
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
         <Navbar />
         <Switch>
           <Route path="/hero-profile">
-            <Home />
+            <HeroProfile />
           </Route>
           <Route exact path="/">
             <Home />

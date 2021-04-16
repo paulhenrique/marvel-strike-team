@@ -62,7 +62,7 @@ function Home() {
       <Header />
       <div id="characters">
         <div className="container">
-          <section>
+          <section className="headLine">
             <h1>Characters</h1>
             <p># results</p>
           </section>
