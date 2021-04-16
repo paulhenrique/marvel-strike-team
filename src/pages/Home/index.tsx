@@ -24,6 +24,39 @@ function Home() {
   //   searchHeroes();
   // }, []);
 
+  let exampleHeroes = [
+    {
+      id: 1,
+      name: 'Spider Man',
+      thumbnail: { path: '/img/spider-man', extension: 'png' },
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel convallis velit.'
+    },
+    {
+      id: 1,
+      name: 'Spider Man',
+      thumbnail: { path: '/img/spider-man', extension: 'png' },
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel convallis velit.'
+    },
+    {
+      id: 1,
+      name: 'Spider Man',
+      thumbnail: { path: '/img/spider-man', extension: 'png' },
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel convallis velit.'
+    },
+    {
+      id: 1,
+      name: 'Spider Man',
+      thumbnail: { path: '/img/spider-man', extension: 'png' },
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel convallis velit.'
+    },
+    {
+      id: 1,
+      name: 'Spider Man',
+      thumbnail: { path: '/img/spider-man', extension: 'png' },
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel convallis velit.'
+    }
+  ]
+
   return (
     <>
       <Header />
@@ -33,17 +66,10 @@ function Home() {
             <h1>Characters</h1>
             <p># results</p>
           </section>
-          <section>
-            {/* {heroes.map((el: Hero) => {
+          <section className="containHeroCards">
+            {exampleHeroes.map((el: Hero) => {
               return (<HeroCard hero={el} />);
-            })} */}
-            <HeroCard
-              hero={{
-                id: 1,
-                name: 'Spider Man',
-                thumbnail: { path: '/img/spider-man', extension: 'png' },
-                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel convallis velit.'
-              }} />
+            })}
           </section>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './style.scss';
 export interface Hero {
   id?: number;
   description?: string;
@@ -23,9 +23,13 @@ const HeroCard: React.FC<HeroItemProps> = ({ hero }) => {
 
   return (
     <div className="card">
-      <img src={imgPath} alt="" />
-      <h1>{hero.name}</h1>
-      <p>{hero.description}</p>
+      <div className="imgContainer">
+        <img src={imgPath} alt="" />
+      </div>
+      <div className="textContainer">
+        <h1 className="name-hero">{hero.name}</h1>
+        <p className="description-hero">{hero.description}</p>
+      </div>
     </div>
   );
 }

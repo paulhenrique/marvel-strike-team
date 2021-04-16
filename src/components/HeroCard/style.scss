@@ -1,0 +1,31 @@
+.card{
+  width:100%;
+  min-width:270px;
+  height:376px;
+  max-height:376px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px 30px;
+  overflow: hidden;
+  p, h1{
+    color: var(--black-text-color);
+  }
+  h1.name-hero{
+    margin-top: 21.2px;
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+    line-height: 2.34rem;
+  }
+  p.description-hero{
+    margin-top: 14px;
+    font-size: 1rem !important;
+    line-height:18.75px !important;
+    font-weight: 400 !important;
+  }
+  .imgContainer{
+    max-height: 198.18px;
+    overflow: hidden;
+  }
+  .textContainer{
+    padding: 0 33px 0  27px;
+  }
+}

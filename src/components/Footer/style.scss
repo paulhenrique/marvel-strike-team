@@ -11,7 +11,7 @@ Footer {
     color: white; 
     p {
       font-family: var(--font-family);
-      font-weight: 400;
+      font-weight: 400 !important;
       font-size: 1.25rem;
       font-style: normal;
       line-height: 23px;
