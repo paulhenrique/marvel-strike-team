@@ -1,19 +1,21 @@
 header{
   width:100%;
-  min-height:491px;
+  height:491px;
+  padding-top: 109px;
   color: white;
   background-size: cover;
   display: flex;
   justify-content:center;
   align-items:center;
-  div{
+  h1.headerTitle{
+    font-weight: 700;
+    line-height: 3.07625rem;
+    font-size:2.625rem;
+    margin-left: 36px;
+  }
+  div.headerHome{
     max-width:670px;
     max-height: 196px;
-    h1{
-      font-weight: 700;
-      line-height: 3.07625rem;
-      font-size:2.625rem;
-    }
     fieldset{
       margin-top: 38px;
       height: 70px;
@@ -39,7 +41,26 @@ header{
         position:absolute;
         right: 0;
         height:100%;
+        cursor: pointer;
+        transition:filter .25s ease;
+        &:hover{
+          filter: brightness(90%);
+        }
       }
+    }
+  }
+  div.headerHero{
+    width:100%;
+    h1.headerTitle{
+      max-width: 500px;
+      font-weight: 700;
+      line-height: 3.07625rem;
+      font-size:2.625rem !important;
+      margin-left: 36px;
+    }
+    .container{
+      display:flex;
+      flex-direction:column;
     }
   }
 }

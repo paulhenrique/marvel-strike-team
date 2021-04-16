@@ -59,13 +59,9 @@ function Home() {
 
   return (
     <>
-      <Header />
+      <Header title="Characters" results="# results" />
       <div id="characters">
         <div className="container">
-          <section className="headLine">
-            <h1>Characters</h1>
-            <p># results</p>
-          </section>
           <section className="containHeroCards">
             {exampleHeroes.map((el: Hero) => {
               return (<HeroCard hero={el} />);
