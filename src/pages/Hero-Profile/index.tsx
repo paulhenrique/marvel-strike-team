@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../../components/Header';
 import HeroCardHeader from '../../components/HeroCardHeader';
 import HeroCardComic from '../../components/HeroCardComic';
+import './style.scss';
 
 function HeroProfile() {
   let comic = {
@@ -18,6 +19,7 @@ function HeroProfile() {
 
   let comics = [];
 
+  comics.push(comic);
   comics.push(comic);
   comics.push(comic);
   comics.push(comic);
