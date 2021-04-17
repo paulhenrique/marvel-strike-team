@@ -15,7 +15,7 @@ const Header: React.FC<AuxProps> = (props) => {
         {
           !props.team ? (
             <div className="headerHome">
-              <h1 className=".headerTitle">Explore the most powerful characters in Marvel</h1>
+              <h1 className="headerTitle">Explore the most powerful characters in Marvel</h1>
               <fieldset>
                 <input type="text" placeholder="Type in a character name" />
                 <button type="submit">
