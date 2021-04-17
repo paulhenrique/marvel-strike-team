@@ -4,9 +4,8 @@ import backgroundImage from '../../assets/img/background-header.png';
 import './style.scss';
 
 interface AuxProps {
-  title: string;
-  results: string;
   hero?: string;
+  team?: boolean;
 }
 
 const Header: React.FC<AuxProps> = (props) => {
@@ -14,7 +13,7 @@ const Header: React.FC<AuxProps> = (props) => {
     <>
       <header style={{ backgroundImage: `url(${backgroundImage})` }}>
         {
-          !props.children ? (
+          !props.team ? (
             <div className="headerHome">
               <h1 className=".headerTitle">Explore the most powerful characters in Marvel</h1>
               <fieldset>
@@ -28,21 +27,13 @@ const Header: React.FC<AuxProps> = (props) => {
             <div className="headerHero">
               <div className="container">
                 <h1 className="headerTitle">{props.hero !== '' ? props.hero : ''}</h1>
-                {props.children}
               </div>
             </div>
           )
 
         }
       </header>
-      <div id="title">
-        <div className="container">
-          <section>
-            <h1>{props.title}</h1>
-            <p>{props.results}</p>
-          </section>
-        </div>
-      </div>
+
     </>
   );
 }

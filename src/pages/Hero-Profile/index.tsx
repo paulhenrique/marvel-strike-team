@@ -27,16 +27,25 @@ function HeroProfile() {
 
   return (
     <>
-      <Header hero="Discover all comics this character took part in" title="Comics" results="# results">
-        <HeroCardHeader hero={{
-          id: 1,
-          name: 'Spider Man',
-          thumbnail: { path: '/img/spider-man', extension: 'png' },
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eleifend metus in tincidunt blandit. Donec sollicitudin maximus accumsan. Sed condimentum ipsum eu lacus suscipit luctus. Nam eleifend orci at diam pharetra tincidunt. Praesent eu metus viverra.'
-        }} />
+      <Header team={true} hero="Discover all comics this character took part in">
       </Header>
       <div id="hero-profile">
+
         <div className="container">
+          <HeroCardHeader hero={{
+            id: 1,
+            name: 'Spider Man',
+            thumbnail: { path: '/img/spider-man', extension: 'png' },
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eleifend metus in tincidunt blandit. Donec sollicitudin maximus accumsan. Sed condimentum ipsum eu lacus suscipit luctus. Nam eleifend orci at diam pharetra tincidunt. Praesent eu metus viverra.'
+          }} />
+          <div id="title">
+            <div className="container">
+              <section>
+                <h1>Comics</h1>
+                <p># results</p>
+              </section>
+            </div>
+          </div>
           {comics.map(comic => (
             <HeroCardComic comic={comic}></HeroCardComic>
           ))}

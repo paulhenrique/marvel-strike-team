@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import HeroProfile from './pages/Hero-Profile';
+import Team from './pages/Team';
 import './assets/style/app.scss';
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
         <Navbar />
         <Switch>
           <Route path="/team">
-            <HeroProfile />
+            <Team />
           </Route>
           <Route path="/hero-profile">
             <HeroProfile />

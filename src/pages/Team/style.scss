@@ -1,0 +1,9 @@
+#team{
+  div.container{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    margin-top: -270px;
+    grid-row-gap: 50px;
+    grid-column-gap: 15px;
+  }
+}

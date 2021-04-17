@@ -59,7 +59,15 @@ function Home() {
 
   return (
     <>
-      <Header title="Characters" results="# results" />
+      <Header />
+      <div id="title">
+        <div className="container">
+          <section>
+            <h1>Comics</h1>
+            <p># results</p>
+          </section>
+        </div>
+      </div>
       <div id="characters">
         <div className="container">
           <section className="containHeroCards">
