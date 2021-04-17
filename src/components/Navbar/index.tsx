@@ -15,7 +15,7 @@ export default function Navbar() {
           <h1>Marvel Strike Team</h1>
         </div>
         <div className="right">
-          <Link className="button" to="/hero-profile">
+          <Link className="button" to="/team">
             Your Team
             <img src={usersIcon} alt="Ícone de usuários" />
           </Link>

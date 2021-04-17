@@ -12,6 +12,9 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
+          <Route path="/team">
+            <HeroProfile />
+          </Route>
           <Route path="/hero-profile">
             <HeroProfile />
           </Route>
