@@ -31,16 +31,29 @@
     font-size: 2rem !important;
     font-weight: 700 !important;
     line-height: 2.34rem;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
   }
   p.description-hero {
     margin-top: 14px;
     font-size: 1rem !important;
     line-height: 18.75px !important;
     font-weight: 400 !important;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
   }
   .imgContainer {
     max-height: 198.18px;
     overflow: hidden;
+    img{
+      width:100%;
+    }
   }
   .textContainer {
     padding: 0 33px 0 27px;

@@ -5,7 +5,7 @@ interface AuxProps {
   comic: Comic
 }
 
-interface Comic {
+export interface Comic {
   title: string;
   date: string;
   pages: number;
@@ -16,6 +16,7 @@ interface Comic {
     extension: string;
   }
 }
+
 const HeroCardComic: React.FC<AuxProps> = ({ comic }) => {
   const imageAddress = `${comic.thumbnail.path}.${comic.thumbnail.extension}`;
 
@@ -31,8 +32,8 @@ const HeroCardComic: React.FC<AuxProps> = ({ comic }) => {
           </h1>
           <div className="cardComicContentInformation">
             <p className="dateInformation">{comic.date}</p>
-            <p className="pagesInformation">{comic.pages}</p>
-            <p className="priceInformation">{comic.price}</p>
+            <p className="pagesInformation">{comic.pages} pages</p>
+            <p className="priceInformation">U$ {comic.price}</p>
           </div>
           <div className="cardComicDescription">
             <p>{comic.description}</p>

@@ -1,29 +1,75 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import marvel from '../../services/marvel';
+
 import Header from '../../components/Header';
+import { Hero } from '../../components/HeroCard';
 import HeroCardHeader from '../../components/HeroCardHeader';
-import HeroCardComic from '../../components/HeroCardComic';
+import HeroCardComic, { Comic } from '../../components/HeroCardComic';
 import './style.scss';
 
-function HeroProfile() {
-  let comic = {
-    title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam pretium metus interdum dolor.',
-    date: '01/01/1990',
-    pages: 47,
-    price: 0.90,
-    description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium...',
-    thumbnail: {
-      path: '/img/spider-man-comic',
-      extension: 'png'
-    }
+interface ParamTypes {
+  id: string;
+}
+
+interface ComicLocal {
+  title: string;
+  pageCount: number;
+  dates: [{ date: string; }];
+  prices: [{ price: string; }];
+  description: string; 
+  thumbnail: {
+    path: string;
+    extension: string;
   };
+}
 
-  let comics = [];
 
-  comics.push(comic);
-  comics.push(comic);
-  comics.push(comic);
-  comics.push(comic);
-  comics.push(comic);
+function HeroProfile() {
+  const public_key: string = process.env.REACT_APP_PUBLIC_KEY || '';
+  const { id } = useParams<ParamTypes>();
+  const url: string = `characters/${id}`;
+  const [hero, setHero] = useState([]);
+  const [comics, setComics] = useState([]);
+
+  async function searchHeroAndComics() {
+    const response = await marvel.get(url, {
+      params: {
+        apikey: public_key,
+        limit: 8,
+        offset: 1
+      }
+    });
+    setHero(response.data.data.results);
+
+    const responseComics = await marvel.get(url + '/comics', {
+      params: {
+        apikey: public_key,
+        limit: 5,
+        offset: 1
+      }
+    });
+    const comics = responseComics.data.data.results.map((comic: ComicLocal) => {
+      return {
+        title: comic.title,
+        pages: Number(comic.pageCount),
+        description: comic.description,
+        date: new Date(comic.dates[0].date).toLocaleDateString(),
+        price: Number(comic.prices[0].price),
+        thumbnail: {
+          path: comic.thumbnail.path,
+          extension: comic.thumbnail.extension
+        }
+      }
+    });
+
+    setComics(comics);
+  }
+
+  useEffect(() => {
+    searchHeroAndComics();
+  }, []);
+
 
   return (
     <>
@@ -32,21 +78,16 @@ function HeroProfile() {
       <div id="hero-profile">
 
         <div className="container">
-          <HeroCardHeader hero={{
-            id: 1,
-            name: 'Spider Man',
-            thumbnail: { path: '/img/spider-man', extension: 'png' },
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eleifend metus in tincidunt blandit. Donec sollicitudin maximus accumsan. Sed condimentum ipsum eu lacus suscipit luctus. Nam eleifend orci at diam pharetra tincidunt. Praesent eu metus viverra.'
-          }} />
+          {hero.map((el: Hero) => <HeroCardHeader hero={el} />)}
           <div id="title">
-            <div className="container">
+            <div className="">
               <section>
                 <h1>Comics</h1>
                 <p># results</p>
               </section>
             </div>
           </div>
-          {comics.map(comic => (
+          {comics.map((comic: Comic) => (
             <HeroCardComic comic={comic}></HeroCardComic>
           ))}
 

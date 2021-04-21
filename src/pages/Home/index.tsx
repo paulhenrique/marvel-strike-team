@@ -6,6 +6,7 @@ import axios from 'axios';
 
 function Home() {
   const [heroes, setHeroes] = useState([]);
+  const [totalElements, setTotalElements] = useState([]);
   const public_key: string = process.env.REACT_APP_PUBLIC_KEY || '';
   const url: string = 'https://gateway.marvel.com/v1/public/characters';
 
@@ -13,49 +14,18 @@ function Home() {
     const response = await axios.get(url, {
       params: {
         apikey: public_key,
-        limit: 5,
+        limit: 8,
         offset: 1
       }
     });
     setHeroes(response.data.data.results);
+    setTotalElements(response.data.data.total);
+    console.log(response.data.data.total);
   }
 
-  // useEffect(() => {
-  //   searchHeroes();
-  // }, []);
-
-  let exampleHeroes = [
-    {
-      id: 1,
-      name: 'Spider Man',
-      thumbnail: { path: '/img/spider-man', extension: 'png' },
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel convallis velit.'
-    },
-    {
-      id: 1,
-      name: 'Spider Man',
-      thumbnail: { path: '/img/spider-man', extension: 'png' },
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel convallis velit.'
-    },
-    {
-      id: 1,
-      name: 'Spider Man',
-      thumbnail: { path: '/img/spider-man', extension: 'png' },
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel convallis velit.'
-    },
-    {
-      id: 1,
-      name: 'Spider Man',
-      thumbnail: { path: '/img/spider-man', extension: 'png' },
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel convallis velit.'
-    },
-    {
-      id: 1,
-      name: 'Spider Man',
-      thumbnail: { path: '/img/spider-man', extension: 'png' },
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel convallis velit.'
-    }
-  ]
+  useEffect(() => {
+    searchHeroes();
+  }, []);
 
   return (
     <>
@@ -71,7 +41,7 @@ function Home() {
       <div id="characters">
         <div className="container">
           <section className="containHeroCards">
-            {exampleHeroes.map((el: Hero) => {
+            {heroes.map((el: Hero) => {
               return (<HeroCard hero={el} />);
             })}
           </section>

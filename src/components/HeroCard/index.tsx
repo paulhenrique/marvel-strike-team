@@ -25,7 +25,7 @@ const HeroCard: React.FC<HeroItemProps> = ({ hero }) => {
 
   return (
     <div className="card">
-      <Link className="heroCardLink" to="/hero-profile">
+      <Link className="heroCardLink" to={`/hero/${hero.id}`}>
         <div className="imgContainer">
           <img src={imgPath} alt="" />
         </div>
