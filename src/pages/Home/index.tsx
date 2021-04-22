@@ -32,7 +32,7 @@ function Home() {
   const public_key: string = process.env.REACT_APP_PUBLIC_KEY || '';
 
   async function searchHeroes() {
-
+    setHeroes([]);
 
     const response = await marvel.get('characters', {
       params: {
@@ -61,9 +61,8 @@ function Home() {
   }
 
   useEffect(() => {
-    setHeroes([]);
     searchHeroes();
-  }, [offset]);
+  }, [offset, search]);
 
   return (
     <>

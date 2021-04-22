@@ -17,13 +17,21 @@ const Header: React.FC<AuxProps> = (props) => {
   const history = useHistory();
 
   function handleSearch() {
-    history.push(`/${searchTerm}`);
+    if (searchTerm.length > 0) {
+      history.push(`/search/${searchTerm}`);
+    } else {
+      history.push(`/`);
+    }
+
   }
 
-  let location = useLocation();
+  const location = useLocation();
+  const name = location.pathname;
+
   useEffect(() => {
-    if (location.pathname === '/') handleSearch();
-  }, []);
+    console.log(location);
+    if (name.split('/search').length > 1 || name === '/') handleSearch();
+  }, [searchTerm]);
 
 
 
