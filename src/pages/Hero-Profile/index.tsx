@@ -14,6 +14,7 @@ interface ParamTypes {
 
 interface ComicLocal {
   title: string;
+  id: number;
   pageCount: number;
   dates: [{ date: string; }];
   prices: [{ price: string; }];
@@ -31,6 +32,7 @@ function HeroProfile() {
   const url: string = `characters/${id}`;
   const [hero, setHero] = useState([]);
   const [comics, setComics] = useState([]);
+  const [results, setResults] = useState(0);
 
   async function searchHeroAndComics() {
     const response = await marvel.get(url, {
@@ -49,8 +51,12 @@ function HeroProfile() {
         offset: 1
       }
     });
+    
+    setResults(responseComics.data.data.results.length);
+
     const comics = responseComics.data.data.results.map((comic: ComicLocal) => {
       return {
+        id: comic.id,
         title: comic.title,
         pages: Number(comic.pageCount),
         description: comic.description,
@@ -83,12 +89,12 @@ function HeroProfile() {
             <div className="">
               <section>
                 <h1>Comics</h1>
-                <p># results</p>
+                <p># {results}</p>
               </section>
             </div>
           </div>
           {comics.map((comic: Comic) => (
-            <HeroCardComic comic={comic}></HeroCardComic>
+            <HeroCardComic key={comic.id} comic={comic}></HeroCardComic>
           ))}
 
         </div>

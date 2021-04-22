@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import favoriteIcon from '../../assets/img/favorite.svg';
 import './style.scss';
@@ -21,7 +21,68 @@ interface HeroItemProps {
 
 const HeroCard: React.FC<HeroItemProps> = ({ hero }) => {
 
-  let imgPath = `${hero.thumbnail.path || ''}.${hero.thumbnail.extension || ''}`;
+  const imgPath = `${hero.thumbnail.path || ''}.${hero.thumbnail.extension || ''}`;
+
+  const [favorite, setFavorite] = useState(false);
+ 
+  useEffect(() => {
+    setFavorite(isFavorite(hero))
+  }, []);
+
+  /**
+   * 
+   * @param hero 
+   * Remove o herói do time do usuário
+   */
+  const removeFromTeam = (hero: Hero) => {
+    const heroes = JSON.parse(localStorage.getItem('MarvelStrikeTeam')!);
+    const heroReturn = heroes.filter((el: Hero) => el.id !== hero.id);
+    console.log('ata');
+    localStorage.setItem('MarvelStrikeTeam', JSON.stringify(heroReturn));
+    setFavorite(false);
+  }
+
+  /**
+   * 
+   * @param hero 
+   * Verifica se o Herói está no time do usuário
+   */
+  const isFavorite = (hero: Hero) => {
+    if (!localStorage.getItem('MarvelStrikeTeam')) return false; // Pode Adicionar aos Favoritos
+    const heroes = JSON.parse(localStorage.getItem('MarvelStrikeTeam')!);
+    const heroReturn = heroes.filter((el: Hero) => el.id === hero.id);
+
+    if (heroReturn.length >= 1) {
+      return true;
+    }; //Já está nos favoritos, não pode adicionar
+
+    return false; //Os favoritos existem, mas esse herói não está, pode adicionar
+  }
+  
+  /**
+   * 
+   * @param hero 
+   * @param remove
+   * Verifica se o herói faz parte do time e se é para o remover ou não 
+   */
+  const addOrRemoveThisHeroTeam = (hero: Hero, remove: boolean = false) => {
+    if (remove) {
+      removeFromTeam(hero);
+      return;
+    };
+
+    if (isFavorite(hero)) return;
+
+    if (!localStorage.getItem('MarvelStrikeTeam')) {
+      const heroes = [hero];
+      localStorage.setItem('MarvelStrikeTeam', JSON.stringify(heroes));
+    } else {
+      const currentHeroes = JSON.parse(localStorage.getItem('MarvelStrikeTeam')!);
+      const heroes = [...currentHeroes, hero];
+      localStorage.setItem('MarvelStrikeTeam', JSON.stringify(heroes));
+      setFavorite(true);
+    }
+  }
 
   return (
     <div className="card">
@@ -34,9 +95,10 @@ const HeroCard: React.FC<HeroItemProps> = ({ hero }) => {
           <p className="description-hero">{hero.description}</p>
         </div>
       </Link>
-      <button className="heroCardFavoriteButton">
+
+      <button type="button" onClick={() => { addOrRemoveThisHeroTeam(hero, favorite) }} className={!favorite ? "heroCardFavoriteButton" : "heroCardRemoveFavoriteButton"}>
         <img src={favoriteIcon} alt="Icone de Favorito" />
-        <span className="tooltip">Adicionar aos Favoritos</span>
+        <span className="tooltip">{!favorite ? "Adicionar aos Favoritos" : "Remover dos Favoritos"}</span>
       </button>
     </div>
   );

@@ -58,7 +58,8 @@
   .textContainer {
     padding: 0 33px 0 27px;
   }
-  .heroCardFavoriteButton {
+  
+  .heroCardFavoriteButton, .heroCardRemoveFavoriteButton{
     width: 54.02px;
     height: 54.02px;
     border: none;
@@ -94,6 +95,12 @@
     img {
       width: 24px;
       height: 24px;
+    }
+  }
+  .heroCardRemoveFavoriteButton{
+    background: var(--red);
+    img{
+      filter: brightness(100) contrast(1);
     }
   }
 }

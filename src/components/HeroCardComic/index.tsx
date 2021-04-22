@@ -6,6 +6,7 @@ interface AuxProps {
 }
 
 export interface Comic {
+  id: number;
   title: string;
   date: string;
   pages: number;
