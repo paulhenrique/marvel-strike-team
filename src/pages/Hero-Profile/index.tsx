@@ -18,7 +18,7 @@ interface ComicLocal {
   pageCount: number;
   dates: [{ date: string; }];
   prices: [{ price: string; }];
-  description: string; 
+  description: string;
   thumbnail: {
     path: string;
     extension: string;
@@ -51,7 +51,7 @@ function HeroProfile() {
         offset: 1
       }
     });
-    
+
     setResults(responseComics.data.data.results.length);
 
     const comics = responseComics.data.data.results.map((comic: ComicLocal) => {

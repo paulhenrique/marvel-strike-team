@@ -2,25 +2,29 @@ import React, { useState, useEffect } from 'react';
 import Header from '../../components/Header';
 import HeroCard, { Hero } from '../../components/HeroCard';
 import './style.scss';
-import axios from 'axios';
+import marvel from '../../services/marvel';
+import { useParams } from 'react-router';
+interface ParamTypes {
+  search: string;
+}
 
 function Home() {
   const [heroes, setHeroes] = useState([]);
   const [totalElements, setTotalElements] = useState([]);
   const public_key: string = process.env.REACT_APP_PUBLIC_KEY || '';
-  const url: string = 'https://gateway.marvel.com/v1/public/characters';
+  const { search } = useParams<ParamTypes>();
 
   async function searchHeroes() {
-    const response = await axios.get(url, {
+    const response = await marvel.get('characters', {
       params: {
         apikey: public_key,
         limit: 8,
-        offset: 1
+        offset: 1,
+        nameStartsWith: search
       }
     });
     setHeroes(response.data.data.results);
     setTotalElements(response.data.data.total);
-    console.log(response.data.data.total);
   }
 
   useEffect(() => {
@@ -33,8 +37,8 @@ function Home() {
       <div id="title">
         <div className="container">
           <section>
-            <h1>Comics</h1>
-            <p># results</p>
+            <h1>Characters</h1>
+            <p># {totalElements}</p>
           </section>
         </div>
       </div>
