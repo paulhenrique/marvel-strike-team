@@ -17,8 +17,10 @@
     width: 90%;
     display: flex;
     .heroCardAvatar {
+        min-width: 200px;
+        min-height: 200px;
         max-width: 200px;
-        height: 200px;
+        max-height: 200px;
         overflow: hidden;
         border-radius: 50%;
         display: flex;

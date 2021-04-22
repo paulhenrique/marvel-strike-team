@@ -4,11 +4,25 @@ import HeroCard, { Hero } from '../../components/HeroCard';
 import marvel from '../../services/marvel';
 import { useParams } from 'react-router';
 import ReactPaginate from 'react-paginate';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import './style.scss';
 interface ParamTypes {
   search: string;
 }
-
+function SkeletonLoading() {
+  return (
+    <>
+      <Skeleton className="cardSkeleton" height={376} />
+      <Skeleton className="cardSkeleton" height={376} />
+      <Skeleton className="cardSkeleton" height={376} />
+      <Skeleton className="cardSkeleton" height={376} />
+      <Skeleton className="cardSkeleton" height={376} />
+      <Skeleton className="cardSkeleton" height={376} />
+      <Skeleton className="cardSkeleton" height={376} />
+      <Skeleton className="cardSkeleton" height={376} />
+    </>
+  );
+}
 function Home() {
   const [heroes, setHeroes] = useState([]);
   const [totalElements, setTotalElements] = useState([]);
@@ -42,6 +56,7 @@ function Home() {
   }
 
   useEffect(() => {
+    setHeroes([]);
     searchHeroes();
   }, [offset, search]);
 
@@ -59,7 +74,12 @@ function Home() {
       <div id="characters">
         <div className="container">
           <section className="containHeroCards">
-            {heroes.map((el: Hero) => {
+
+            {
+              heroes.length === 0 && (<SkeletonLoading />)
+            }
+
+            {heroes.length > 0 && heroes.map((el: Hero) => {
               return (<HeroCard key={el.id} hero={el} />);
             })}
           </section>

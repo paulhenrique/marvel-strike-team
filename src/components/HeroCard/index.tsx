@@ -32,7 +32,7 @@ const HeroCard: React.FC<HeroItemProps> = ({ hero, update }) => {
   useEffect(() => {
     setFavorite(isFavorite(hero));
     if (update) update();
-  }, [favorite]);
+  }, [favorite, hero, update]);
 
   /**
    * 
@@ -101,7 +101,11 @@ const HeroCard: React.FC<HeroItemProps> = ({ hero, update }) => {
         </div>
       </Link>
 
-      <button type="button" onClick={() => { addOrRemoveThisHeroTeam(hero, favorite) }} className={!favorite ? "heroCardFavoriteButton" : "heroCardRemoveFavoriteButton"}>
+      <button
+        type="button"
+        onClick={() => { addOrRemoveThisHeroTeam(hero, favorite) }}
+        className={!favorite ? "heroCardFavoriteButton" : "heroCardRemoveFavoriteButton"}
+      >
         <img src={favoriteIcon} alt="Icone de Favorito" />
         <span className="tooltip">{!favorite ? "Add to Team" : "Remove from Team"}</span>
       </button>
