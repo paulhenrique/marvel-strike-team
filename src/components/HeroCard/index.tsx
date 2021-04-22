@@ -15,20 +15,20 @@ export interface Hero {
   }
 }
 
-class Props{
-  update? = function () { };
+class Props {
+  update?= function () { };
 }
-interface HeroItemProps extends Props{
+interface HeroItemProps extends Props {
   hero: Hero;
 }
 
 
-const HeroCard: React.FC<HeroItemProps> = ({ hero, update}) => {
+const HeroCard: React.FC<HeroItemProps> = ({ hero, update }) => {
 
   const imgPath = `${hero.thumbnail.path || ''}.${hero.thumbnail.extension || ''}`;
 
   const [favorite, setFavorite] = useState(false);
- 
+
   useEffect(() => {
     setFavorite(isFavorite(hero));
     if (update) update();
@@ -103,7 +103,7 @@ const HeroCard: React.FC<HeroItemProps> = ({ hero, update}) => {
 
       <button type="button" onClick={() => { addOrRemoveThisHeroTeam(hero, favorite) }} className={!favorite ? "heroCardFavoriteButton" : "heroCardRemoveFavoriteButton"}>
         <img src={favoriteIcon} alt="Icone de Favorito" />
-        <span className="tooltip">{!favorite ? "Adicionar aos Favoritos" : "Remover dos Favoritos"}</span>
+        <span className="tooltip">{!favorite ? "Add to Team" : "Remove from Team"}</span>
       </button>
     </div>
   );

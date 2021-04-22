@@ -28,10 +28,17 @@ function Home() {
     setHeroes(response.data.data.results);
     setTotalElements(response.data.data.total);
   }
-
+  function AnimateScroll() {
+    const el = document.getElementById('characters');
+    window.scrollTo({
+      top: Number(el?.offsetTop),
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
   function handlePageChange(sel: { selected: number }) {
-    setOffset((sel.selected) * 8)
-    console.log(sel, offset);
+    setOffset((sel.selected) * 8);
+    AnimateScroll();
   }
 
   useEffect(() => {
