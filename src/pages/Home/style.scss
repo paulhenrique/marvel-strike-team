@@ -29,5 +29,8 @@
     width: 100%;
     column-gap: 0.4rem;
     list-style: none;
+    li{
+      cursor: pointer;
+    }
   }
 }
