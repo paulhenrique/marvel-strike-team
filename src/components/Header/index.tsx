@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import searchIcon from '../../assets/img/search.svg';
 import backgroundImage from '../../assets/img/background-header.png';
 import './style.scss';
 import { useHistory } from 'react-router';
 import { Parallax } from 'react-parallax';
+import { useLocation } from 'react-router-dom';
 
 interface AuxProps {
   hero?: string;
@@ -15,11 +16,21 @@ const Header: React.FC<AuxProps> = (props) => {
   const [searchTerm, setSearchTerm] = useState('');
   const history = useHistory();
 
+  function handleSearch() {
+    history.push(`/${searchTerm}`);
+  }
+
+  let location = useLocation();
+  useEffect(() => {
+    if (location.pathname === '/') handleSearch();
+  }, []);
+
+
+
   return (
     <>
       <Parallax bgImage={backgroundImage} strength={250} >
         <header >
-
           {
             !props.team ? (
               <div className="headerHome">
@@ -31,7 +42,10 @@ const Header: React.FC<AuxProps> = (props) => {
                     type="text"
                     placeholder="Type in a character name"
                   />
-                  <button onClick={() => history.push(`/${searchTerm}`)} type="submit">
+                  <button
+                    onClick={() => handleSearch()}
+                    type="button"
+                  >
                     <img src={searchIcon} alt="ícone de lupa para pesquisa" />
                   </button>
                 </fieldset>

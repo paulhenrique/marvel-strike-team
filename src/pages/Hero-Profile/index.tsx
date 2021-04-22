@@ -79,8 +79,7 @@ function HeroProfile() {
 
   return (
     <>
-      <Header team={true} hero="Discover all comics this character took part in">
-      </Header>
+      <Header team={true} hero="Discover all comics this character took part in" />
       <div id="hero-profile">
 
         <div className="container">

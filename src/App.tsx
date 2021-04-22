@@ -17,9 +17,11 @@ function App() {
             <Team />
           </Route>
           <Route path="/hero/:id" children={<HeroProfile />} />
-          <Route exact path="/:search?">
+
+          <Route exact path="/">
             <Home />
           </Route>
+
         </Switch>
         <Footer />
       </Router>

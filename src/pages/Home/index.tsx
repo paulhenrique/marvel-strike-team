@@ -4,7 +4,7 @@ import HeroCard, { Hero } from '../../components/HeroCard';
 import marvel from '../../services/marvel';
 import { useParams } from 'react-router';
 import ReactPaginate from 'react-paginate';
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import Skeleton from 'react-loading-skeleton';
 import './style.scss';
 interface ParamTypes {
   search: string;
@@ -23,6 +23,7 @@ function SkeletonLoading() {
     </>
   );
 }
+
 function Home() {
   const [heroes, setHeroes] = useState([]);
   const [totalElements, setTotalElements] = useState([]);
@@ -31,6 +32,8 @@ function Home() {
   const public_key: string = process.env.REACT_APP_PUBLIC_KEY || '';
 
   async function searchHeroes() {
+
+
     const response = await marvel.get('characters', {
       params: {
         apikey: public_key,
@@ -39,8 +42,10 @@ function Home() {
         nameStartsWith: search
       }
     });
+
     setHeroes(response.data.data.results);
     setTotalElements(response.data.data.total);
+
   }
   function AnimateScroll() {
     const el = document.getElementById('characters');
@@ -58,7 +63,7 @@ function Home() {
   useEffect(() => {
     setHeroes([]);
     searchHeroes();
-  }, [offset, search]);
+  }, [offset]);
 
   return (
     <>
