@@ -10,8 +10,7 @@ const HeroCardHeader: React.FC<propsHero> = ({ hero }) => {
   return (
     <div className="cardHeader">
       <div className="cardHeaderContent">
-        <div className="heroCardAvatar">
-          <img src={imageAddress} alt="Imagem do spider man" />
+        <div className="heroCardAvatar" style={{ 'backgroundImage': `url(${imageAddress})` }}>
         </div>
         <div className="cardHeaderTextContainer">
           <h1 className="heroCardName">{hero.name}</h1>
