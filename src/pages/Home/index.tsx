@@ -33,7 +33,6 @@ function Home() {
 
   async function searchHeroes() {
     setHeroes([]);
-
     const response = await marvel.get('characters', {
       params: {
         apikey: public_key,

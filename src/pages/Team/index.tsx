@@ -7,11 +7,14 @@ const Team = function () {
   const [teamHeroes, setTeamHeroes] = useState([]);
 
   function updateTeamHeroes() {
+    if (JSON.stringify(teamHeroes) === localStorage.getItem('MarvelStrikeTeam')) return;
     setTeamHeroes(JSON.parse(localStorage.getItem('MarvelStrikeTeam')!));
   }
 
+
+
   useEffect(() => {
-    updateTeamHeroes()
+    updateTeamHeroes();
   }, []);
 
   return (
@@ -21,7 +24,7 @@ const Team = function () {
       </Header>
       <div id="team">
         <div className="container">
-          {teamHeroes.map((el: Hero) => (
+          {teamHeroes.splice(0, 8).map((el: Hero) => (
             <HeroCard key={el.id} hero={el} update={updateTeamHeroes} />
           ))}
         </div>
