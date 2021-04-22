@@ -15,19 +15,24 @@ export interface Hero {
   }
 }
 
-interface HeroItemProps {
-  hero: Hero
+class Props{
+  update? = function () { };
+}
+interface HeroItemProps extends Props{
+  hero: Hero;
 }
 
-const HeroCard: React.FC<HeroItemProps> = ({ hero }) => {
+
+const HeroCard: React.FC<HeroItemProps> = ({ hero, update}) => {
 
   const imgPath = `${hero.thumbnail.path || ''}.${hero.thumbnail.extension || ''}`;
 
   const [favorite, setFavorite] = useState(false);
  
   useEffect(() => {
-    setFavorite(isFavorite(hero))
-  }, []);
+    setFavorite(isFavorite(hero));
+    if (update) update();
+  }, [favorite]);
 
   /**
    * 
@@ -58,7 +63,7 @@ const HeroCard: React.FC<HeroItemProps> = ({ hero }) => {
 
     return false; //Os favoritos existem, mas esse herói não está, pode adicionar
   }
-  
+
   /**
    * 
    * @param hero 

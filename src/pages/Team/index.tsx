@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../../components/Header';
 import HeroCard, { Hero } from '../../components/HeroCard';
 import './style.scss';
 
 const Team = function () {
-  const teamHeroes = JSON.parse(localStorage.getItem('MarvelStrikeTeam')!);
-
+  const [teamHeroes, setTeamHeroes] = useState([]);
+  
+  function updateTeamHeroes() {
+    setTeamHeroes(JSON.parse(localStorage.getItem('MarvelStrikeTeam')!));
+  }
+  
+  useEffect(() => {
+    updateTeamHeroes()
+  })
   return (
     <>
       <Header team={true} hero="Here is your own strike team choice">
@@ -14,7 +21,7 @@ const Team = function () {
       <div id="team">
         <div className="container">
           {teamHeroes.map((el: Hero) => (
-            <HeroCard hero={el} />
+            <HeroCard hero={el} update={updateTeamHeroes} />
           ))}
         </div>
       </div>

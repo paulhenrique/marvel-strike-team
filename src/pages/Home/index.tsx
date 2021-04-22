@@ -42,7 +42,7 @@ function Home() {
         <div className="container">
           <section className="containHeroCards">
             {heroes.map((el: Hero) => {
-              return (<HeroCard hero={el} />);
+              return (<HeroCard key={el.id} hero={el} />);
             })}
           </section>
         </div>
