@@ -30,7 +30,8 @@ function Home() {
   }
 
   function handlePageChange(sel: { selected: number }) {
-    setOffset(sel.selected * offset)
+    setOffset((sel.selected) * 8)
+    console.log(sel, offset);
   }
 
   useEffect(() => {
@@ -58,17 +59,17 @@ function Home() {
         </div>
       </div>
       <div className="container">
-        <section className="pagination">
+        <div className="pagination">
           <ReactPaginate
             previousClassName="prevButton"
             nextLinkClassName="nextButton"
             previousLabel="Prev"
-            onPageChange={handlePageChange}
-            pageCount={Number(totalElements)}
+            onPageChange={(sel) => handlePageChange(sel)}
+            pageCount={Number(Number(totalElements) / 8)}
             pageRangeDisplayed={4}
             marginPagesDisplayed={1}
           />
-        </section>
+        </div>
       </div>
     </>
   );

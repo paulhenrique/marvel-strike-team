@@ -17,6 +17,10 @@
   }
 }
 .pagination {
+  display: flex;
+  justify-content: end;
+  margin-left: auto;
+  margin-top: 23px;
   ul {
     color: var(--black-text-color);
     font-size: 1.5rem;
