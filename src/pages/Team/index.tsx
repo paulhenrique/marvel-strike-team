@@ -13,6 +13,7 @@ const Team = function () {
     return teamHeroes.length <= 0;
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   function updateTeamHeroes() {
     if (!localStorage.getItem('MarvelStrikeTeam')) return;
     if (JSON.stringify(teamHeroes) === localStorage.getItem('MarvelStrikeTeam')) {
@@ -28,7 +29,7 @@ const Team = function () {
 
   useEffect(() => {
     updateTeamHeroes();
-  }, []);
+  }, [updateTeamHeroes]);
 
 
   return (

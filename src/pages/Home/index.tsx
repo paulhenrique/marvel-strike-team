@@ -18,6 +18,7 @@ function Home() {
   const { search } = useParams<ParamTypes>();
   const public_key: string = process.env.REACT_APP_PUBLIC_KEY || '';
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   async function searchHeroes() {
     setHeroes([]);
     const response = await marvel.get('characters', {
@@ -48,7 +49,7 @@ function Home() {
 
   useEffect(() => {
     searchHeroes();
-  }, [offset, search]);
+  }, [offset, search, searchHeroes]);
 
   return (
     <>

@@ -16,6 +16,7 @@ const Header: React.FC<AuxProps> = (props) => {
   const [searchTerm, setSearchTerm] = useState('');
   const history = useHistory();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   function handleSearch() {
     if (searchTerm.length > 0) {
       history.push(`/search/${searchTerm}`);
@@ -29,9 +30,8 @@ const Header: React.FC<AuxProps> = (props) => {
   const name = location.pathname;
 
   useEffect(() => {
-    console.log(location);
     if (name.split('/search').length > 1 || name === '/') handleSearch();
-  }, [searchTerm]);
+  }, [handleSearch, location, name, searchTerm]);
 
 
 

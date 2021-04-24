@@ -34,6 +34,7 @@ function HeroProfile() {
   const [comics, setComics] = useState([]);
   const [results, setResults] = useState(0);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   async function searchHeroAndComics() {
     const response = await marvel.get(url, {
       params: {
@@ -42,6 +43,7 @@ function HeroProfile() {
         offset: 1
       }
     });
+
     setHero(response.data.data.results);
 
     const responseComics = await marvel.get(url + '/comics', {
@@ -74,7 +76,7 @@ function HeroProfile() {
 
   useEffect(() => {
     searchHeroAndComics();
-  }, []);
+  }, [searchHeroAndComics]);
 
 
   return (
