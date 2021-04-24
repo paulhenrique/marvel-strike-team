@@ -83,7 +83,7 @@ function HeroProfile() {
       <div id="hero-profile">
 
         <div className="container">
-          {hero.map((el: Hero) => <HeroCardHeader hero={el} />)}
+          {hero.map((el: Hero) => <HeroCardHeader key={el.id} hero={el} />)}
           <div id="title">
             <div className="">
               <section>

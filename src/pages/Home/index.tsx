@@ -4,24 +4,11 @@ import HeroCard, { Hero } from '../../components/HeroCard';
 import marvel from '../../services/marvel';
 import { useParams } from 'react-router';
 import ReactPaginate from 'react-paginate';
-import Skeleton from 'react-loading-skeleton';
+import SkeletonLoading from '../../components/Skeleton';
+
 import './style.scss';
 interface ParamTypes {
   search: string;
-}
-function SkeletonLoading() {
-  return (
-    <>
-      <Skeleton className="cardSkeleton" height={376} />
-      <Skeleton className="cardSkeleton" height={376} />
-      <Skeleton className="cardSkeleton" height={376} />
-      <Skeleton className="cardSkeleton" height={376} />
-      <Skeleton className="cardSkeleton" height={376} />
-      <Skeleton className="cardSkeleton" height={376} />
-      <Skeleton className="cardSkeleton" height={376} />
-      <Skeleton className="cardSkeleton" height={376} />
-    </>
-  );
 }
 
 function Home() {

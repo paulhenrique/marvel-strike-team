@@ -1,7 +1,8 @@
-#hero-profile{
-  position: relative;
-  top: -280px;
-  .container{
+#hero-profile {
+  margin-top: -280px;
+  z-index: 3;
+
+  .container {
     display: flex;
     flex-direction: column !important;
   }

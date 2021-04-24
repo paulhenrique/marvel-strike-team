@@ -16,7 +16,7 @@ export default function Navbar() {
         </div>
         <div className="right">
           <Link className="button" to="/team">
-            Your Team
+            <span>Your Team</span>
             <img src={usersIcon} alt="Ícone de usuários" />
           </Link>
         </div>

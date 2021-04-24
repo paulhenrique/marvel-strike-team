@@ -7,25 +7,31 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
   .container {
     justify-content: space-between;
     color: white;
+
     div.left {
       display: flex;
       align-items: center;
+
       h1 {
         font-family: var(--font-family);
         font-size: 2.25rem;
       }
+
       img {
         margin-right: 16.45px;
         width: 59.55px;
       }
     }
+
     div.right {
       display: flex;
       flex-direction: column;
       justify-content: center;
+
       a.button {
         font-family: var(--font-family);
         background: var(--red);
@@ -39,12 +45,24 @@
         padding: 18.5px 13px 18.5px 14px;
         border-radius: 5px 20px;
         transition: -25s filter ease;
+
         img {
           width: 30px;
           margin-left: 14px;
         }
+
         &:hover {
           filter: brightness(90%);
+        }
+
+        @media (max-width: 700px) {
+          span {
+            display: none;
+          }
+
+          img {
+            margin-left: 0;
+          }
         }
       }
     }

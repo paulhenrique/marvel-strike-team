@@ -24,8 +24,7 @@ const HeroCardComic: React.FC<AuxProps> = ({ comic }) => {
   return (
     <>
       <div className="cardComic">
-        <div className="contentImg">
-          <img src={imageAddress} alt={comic.title} />
+        <div className="contentImg" style={{ backgroundImage: `url(${imageAddress})` }}>
         </div>
         <div className="cardComicContentText">
           <h1 className="cardComicTitle">

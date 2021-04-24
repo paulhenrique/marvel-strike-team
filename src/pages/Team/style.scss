@@ -1,7 +1,8 @@
-#team{
-  div.container{
+#team {
+  div.container {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     margin-top: -270px;
     grid-row-gap: 50px;
     grid-column-gap: 15px;
