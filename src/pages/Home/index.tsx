@@ -4,11 +4,24 @@ import HeroCard, { Hero } from '../../components/HeroCard';
 import marvel from '../../services/marvel';
 import { useParams } from 'react-router';
 import ReactPaginate from 'react-paginate';
-import SkeletonLoading from '../../components/Skeleton';
-
+import Skeleton from 'react-loading-skeleton';
 import './style.scss';
 interface ParamTypes {
   search: string;
+}
+function SkeletonLoading() {
+  return (
+    <>
+      <Skeleton className="cardSkeleton" height={376} />
+      <Skeleton className="cardSkeleton" height={376} />
+      <Skeleton className="cardSkeleton" height={376} />
+      <Skeleton className="cardSkeleton" height={376} />
+      <Skeleton className="cardSkeleton" height={376} />
+      <Skeleton className="cardSkeleton" height={376} />
+      <Skeleton className="cardSkeleton" height={376} />
+      <Skeleton className="cardSkeleton" height={376} />
+    </>
+  );
 }
 
 function Home() {
@@ -18,7 +31,6 @@ function Home() {
   const { search } = useParams<ParamTypes>();
   const public_key: string = process.env.REACT_APP_PUBLIC_KEY || '';
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   async function searchHeroes() {
     setHeroes([]);
     const response = await marvel.get('characters', {
@@ -49,7 +61,8 @@ function Home() {
 
   useEffect(() => {
     searchHeroes();
-  }, [offset, search, searchHeroes]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [offset, search]);
 
   return (
     <>
