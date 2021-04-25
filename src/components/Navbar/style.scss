@@ -66,5 +66,30 @@
         }
       }
     }
+
+    position: relative;
+
+    .previousPageButton {
+      background: transparent;
+      border: none;
+      color: #FFCDD2;
+      font-family: Roboto;
+      font-size: 1.5rem;
+      font-weight: 700;
+      width: 292px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: absolute;
+      right: 0;
+      z-index: 9;
+      top: calc(100% + 50px);
+      cursor: pointer;
+      transition: filter .25s;
+
+      &:hover {
+        filter: brightness(0.85);
+      }
+    }
   }
 }

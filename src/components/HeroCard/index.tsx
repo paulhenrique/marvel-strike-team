@@ -42,7 +42,6 @@ const HeroCard: React.FC<HeroItemProps> = ({ hero, update }) => {
   const removeFromTeam = (hero: Hero) => {
     const heroes = JSON.parse(localStorage.getItem('MarvelStrikeTeam')!);
     const heroReturn = heroes.filter((el: Hero) => el.id !== hero.id);
-    console.log('ata');
     localStorage.setItem('MarvelStrikeTeam', JSON.stringify(heroReturn));
     setFavorite(false);
   }
