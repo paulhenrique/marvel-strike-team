@@ -38,7 +38,7 @@ const Header: React.FC<AuxProps> = (props) => {
 
   return (
     <>
-      <Parallax bgImage={backgroundImage} strength={250} >
+      <Parallax style={{ zIndex: props.hero ? '-1' : '' }} bgImage={backgroundImage} strength={250} >
         <header >
           {
             !props.team ? (
