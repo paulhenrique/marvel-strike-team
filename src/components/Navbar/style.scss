@@ -90,6 +90,15 @@
       &:hover {
         filter: brightness(0.85);
       }
+
+      @media (max-width:450px) {
+        justify-content: flex-end;
+        width: auto;
+
+        span {
+          display: none;
+        }
+      }
     }
   }
 }
