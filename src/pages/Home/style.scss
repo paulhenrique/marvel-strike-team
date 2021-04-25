@@ -25,6 +25,15 @@
       }
     }
   }
+
+}
+
+.emptySearch {
+  h1 {
+    font-size: 2.625rem;
+    white-space: nowrap;
+    padding: 5rem;
+  }
 }
 
 .pagination {
@@ -54,4 +63,6 @@
       cursor: pointer;
     }
   }
+
+
 }

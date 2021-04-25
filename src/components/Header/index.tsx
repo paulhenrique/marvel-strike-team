@@ -17,13 +17,13 @@ const Header: React.FC<AuxProps> = (props) => {
   const [searchTerm, setSearchTerm] = useState('');
   const history = useHistory();
 
-  function handleSearch() {
-    if (searchTerm.length > 0) {
-      history.push(`/search/${searchTerm}`);
-    } else {
-      history.push(`/`);
-    }
+  function handleKeyPress(e: { key: string }) {
+    if (e.key === 'Enter') handleSearch();
+  }
 
+  function handleSearch() {
+    if (searchTerm.length > 0) history.push(`/search/${searchTerm}`);
+    else history.push(`/`);
   }
 
   const location = useLocation();
@@ -33,8 +33,6 @@ const Header: React.FC<AuxProps> = (props) => {
     if (name.split('/search').length > 1 || name === '/') handleSearch();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchTerm]);
-
-
 
   return (
     <>
@@ -49,6 +47,7 @@ const Header: React.FC<AuxProps> = (props) => {
                     minLength={2}
                     debounceTimeout={500}
                     type="text"
+                    onKeyPress={(e: { key: string; }) => handleKeyPress(e)}
                     placeholder="Type in a character name"
                     onChange={event => setSearchTerm(event.target.value)}
                   />

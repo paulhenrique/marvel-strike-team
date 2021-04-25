@@ -26,7 +26,7 @@ function SkeletonLoading() {
 
 function Home() {
   const [heroes, setHeroes] = useState([]);
-  const [totalElements, setTotalElements] = useState([]);
+  const [totalElements, setTotalElements] = useState(0);
   const [offset, setOffset] = useState(0);
   const { search } = useParams<ParamTypes>();
   const public_key: string = process.env.REACT_APP_PUBLIC_KEY || '';
@@ -78,15 +78,22 @@ function Home() {
       <div id="characters">
         <div className="container">
           <section className="containHeroCards">
-
             {
-              heroes.length === 0 && (<SkeletonLoading />)
+              (heroes.length === 0 && !search) && (<SkeletonLoading />)
             }
 
-            {heroes.length > 0 && heroes.map((el: Hero) => {
+            {(heroes.length > 0 && totalElements !== 0) && heroes.map((el: Hero) => {
               return (<HeroCard key={el.id} hero={el} />);
             })}
+
           </section>
+          {
+            totalElements === 0 && (
+              <div className="emptySearch">
+                <h1>{'No results to: ' + search} </h1>
+              </div>
+            )
+          }
         </div>
       </div>
       <div className="container">
