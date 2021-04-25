@@ -5,6 +5,7 @@ import './style.scss';
 import { useHistory } from 'react-router';
 import { Parallax } from 'react-parallax';
 import { useLocation } from 'react-router-dom';
+import { DebounceInput } from 'react-debounce-input';
 
 interface AuxProps {
   hero?: string;
@@ -45,11 +46,12 @@ const Header: React.FC<AuxProps> = (props) => {
               <div className="headerHome">
                 <h1 className="headerTitle">Explore the most powerful characters in Marvel</h1>
                 <fieldset>
-                  <input
-                    value={searchTerm}
-                    onChange={event => setSearchTerm(event.target.value)}
+                  <DebounceInput
+                    minLength={2}
+                    debounceTimeout={500}
                     type="text"
                     placeholder="Type in a character name"
+                    onChange={event => setSearchTerm(event.target.value)}
                   />
                   <button
                     onClick={() => handleSearch()}
