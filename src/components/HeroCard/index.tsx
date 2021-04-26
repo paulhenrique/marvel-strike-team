@@ -55,7 +55,7 @@ const HeroCard: React.FC<HeroItemProps> = ({ hero, update }) => {
     if (!localStorage.getItem('MarvelStrikeTeam')) return false; // Pode Adicionar aos Favoritos
     const heroes = JSON.parse(localStorage.getItem('MarvelStrikeTeam')!);
     const heroReturn = heroes.filter((el: Hero) => el.id === hero.id);
-
+    console.log(heroReturn.length);
     if (heroReturn.length >= 1) {
       return true;
     }; //Já está nos favoritos, não pode adicionar
@@ -80,6 +80,7 @@ const HeroCard: React.FC<HeroItemProps> = ({ hero, update }) => {
     if (!localStorage.getItem('MarvelStrikeTeam')) {
       const heroes = [hero];
       localStorage.setItem('MarvelStrikeTeam', JSON.stringify(heroes));
+      setFavorite(true);
     } else {
       const currentHeroes = JSON.parse(localStorage.getItem('MarvelStrikeTeam')!);
       const heroes = [...currentHeroes, hero];
